@@ -685,8 +685,14 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
         return;
     }
     
+    if (self.delegate && [self.delegate respondsToSelector:@selector(textViewWillRefreshFirstResponder:)]) {
+        [[self delegate] textViewWillRefreshFirstResponder:self];
+    }
     _didNotResignFirstResponder = YES;
     [self resignFirstResponder];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(textViewDidRefreshFirstResponder:)]) {
+        [[self delegate] textViewDidRefreshFirstResponder:self];
+    }
     
     _didNotResignFirstResponder = NO;
     [self becomeFirstResponder];

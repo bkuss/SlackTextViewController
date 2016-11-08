@@ -158,6 +158,9 @@ UIKIT_EXTERN NSString * const SLKTextViewPastedItemData;
  */
 - (BOOL)textView:(SLKTextView *)textView shouldInsertSuffixForFormattingWithSymbol:(NSString *)symbol prefixRange:(NSRange)prefixRange;
 
+- (void)textViewWillRefreshFirstResponder:(SLKTextView *)textView;
+- (void)textViewDidRefreshFirstResponder:(SLKTextView *)textView;
+
 @end
 
 NS_ASSUME_NONNULL_END
